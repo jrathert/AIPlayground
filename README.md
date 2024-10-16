@@ -27,37 +27,39 @@ All of the tools above can be easily installed by using  `pipenv`:
 
 _Please note: You need Python 3.12 in order for this to work (`spacy` fails with 3.13)_
 
- ## Runtime dependencies
+## Runtime dependencies
 
- ### Spacy data
+### Spacy data
 
- The `spacy` tools rely on downloading the relevant neural network models, e.g., by running 
- ```
- python -m spacy download en_core_web_sm
- ``` 
+The `spacy` tools rely on downloading the relevant neural network models, e.g., by running 
+```
+python -m spacy download en_core_web_sm
+``` 
  
- See https://spacy.io/usage for details.
+See https://spacy.io/usage for details.
 
- ### Environment variables
+### Environment variables
 
- Most tools rely on respective environment variables to be set. Suggestion is to add them to an `.env` file in the local directory. This file can than either be parsed manually (`source .env`) before running any program or is read by your IDE (e.g., VS Code) when debugging or by your environment manager (I use `pipenv`).
+Most tools rely on respective environment variables to be set. Suggestion is to add them to an `.env` file in the local directory. This file can than either be parsed manually (`source .env`) before running any program or is read by your IDE (e.g., VS Code) when debugging or by your environment manager (I use `pipenv`).
 
- The `.env` file looks like this:
+The `.env` file looks like this:
 
- ```
- LLM_PROVIDER=AZURE_OPENAI
+```
+LLM_PROVIDER=AZURE_OPENAI
 
- # Azure endpoint and key can be found in Azure OpenAI Studio (https://oai.azure.com/portal)
+# Azure endpoint and key can be found in Azure OpenAI Studio (https://oai.azure.com/portal)
 AZURE_OPENAI_ENDPOINT=https://<yourendpoint>.openai.azure.com/
 AZURE_OPENAI_API_KEY=s0m3l0ngt3xtandnumber5tr1ng
 AZURE_OPENAI_MODEL=gpt-4o-mini
 AZURE_OPENAI_DEPLOYMENT_NAME=openai-gpt-4o-mini-deployment
 OPENAI_API_VERSION=2024-06-01
 
+# OpenAI endpoint
+OPENAI_MODEL=gpt-4o-mini
 OPENAI_API_KEY=an-evenl0ng3er5tr1ngfr0m0pena1ap1
 ```
 
-# Example scripts
+## Example scripts
 
 These are simple script that prove proper functioning of all APIs and frameworks
 
@@ -67,7 +69,9 @@ These are simple script that prove proper functioning of all APIs and frameworks
 - `first_spacy.py` - simple test of spacy NLP engine
 - `first_milvus.py` - short test of milvus vector DB
 
-# Applications
+The main idea of these scripts is to test if the environment is properly set up and works.
+
+## Applications
 
 These are small applications (under development) that might leverage the above APIs and frameworks. They expect an XL file called `allcomp.xlsx` in the current directory with a sheet `Sheet1` in it, having in their first column a heading and then a list of strings. These will be processed.
 
@@ -75,6 +79,4 @@ These are small applications (under development) that might leverage the above A
 - `name_normalizer.py` - uses `fuzzywuzzy` and a super inefficient algorithm (of O^2) to identify similarities
 
 Both tools are WIP, and as can be seen, do not use any AI functionality yet.
-
-
 
